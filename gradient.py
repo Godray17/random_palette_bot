@@ -1,15 +1,15 @@
 import uuid
 import telebot
-from PIL import Image
+from PIL import Image, ImageFilter
 import math
 from random import randint
 import os
 width, height = 700, 700
-bot = telebot.TeleBot("API KEY")
+bot = telebot.TeleBot("2103029812:AAGeongD7MgAlHRL1kdWPaxwjO-ZztVIWas")
 im = Image.new('RGB', (width, height))
 ld = im.load()
-way = "~/grad/" + str(uuid.uuid4()) + "grad.png"
-chat_id = "@YOUR CHAT ID"
+way = "/opt/random_palette/grad/" + str(uuid.uuid4()) + "grad.png"
+chat_id = "@random_gradients"
 
 heatmap = [
     [0.0, (randint(0, 100) * 0.01, randint(0, 100)
@@ -57,7 +57,9 @@ if c == 1:
     paintx()
 else:
     painty()
-im.save(way)
+
+blured_im = im.filter(ImageFilter.GaussianBlur(5))
+blured_im.save(way)
 photo = open(way, 'rb')
 bot.send_photo(chat_id, photo)
 os.remove(way)
