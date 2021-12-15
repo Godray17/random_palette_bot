@@ -1,15 +1,14 @@
-import uuid
 import telebot
 from PIL import Image, ImageFilter
 import math
 from random import randint
 import os
 width, height = 700, 700
-bot = telebot.TeleBot("2103029812:AAGeongD7MgAlHRL1kdWPaxwjO-ZztVIWas")
+bot = telebot.TeleBot("YOUR API")
 im = Image.new('RGB', (width, height))
 ld = im.load()
-way = "/opt/random_palette/grad/" + str(uuid.uuid4()) + "grad.png"
-chat_id = "@random_gradients"
+way = "/opt/random_palette/grad/" + "grad.png"
+chat_id = "YOIR chad id"
 
 heatmap = [
     [0.0, (randint(0, 100) * 0.01, randint(0, 100)
